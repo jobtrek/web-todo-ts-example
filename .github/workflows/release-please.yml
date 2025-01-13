@@ -15,4 +15,4 @@ jobs:
     steps:
       - uses: googleapis/release-please-action@v4
         with:
-          token: ${{ secrets.RELEASE_PLEASE_REPO_TOKEN }}
+          token: ${{ secrets.RELEASE_PLEASE_WEB_TODO_TS_EXAMPLE }}
