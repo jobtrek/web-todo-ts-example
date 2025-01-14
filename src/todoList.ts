@@ -1,5 +1,5 @@
-import { load } from './todoStorage.ts'
 import { addTodoHandler } from './todoDisplay.ts'
+import { load } from './todoStorage.ts'
 
 /**
  * This function initializes the todo list application.

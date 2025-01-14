@@ -1,4 +1,4 @@
-import { addTodo, removeTodo, type Todo, toggleTodo } from './todoStorage.ts'
+import { type Todo, addTodo, removeTodo, toggleTodo } from './todoStorage.ts'
 
 export const addTodoHandler = (
   todoList: Todo[],
