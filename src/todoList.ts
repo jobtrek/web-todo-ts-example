@@ -1,5 +1,5 @@
-import {load} from "./todoStorage.ts";
-import {addTodoHandler} from "./todoDisplay.ts";
+import { load } from './todoStorage.ts'
+import { addTodoHandler } from './todoDisplay.ts'
 
 /**
  * This function initializes the todo list application.
@@ -12,14 +12,19 @@ export const startTodoListApplication = (
   todoInput: HTMLInputElement,
   dueDateInput: HTMLInputElement,
   addTodoButton: HTMLButtonElement,
-  todoListDisplay: HTMLUListElement
+  todoListDisplay: HTMLUListElement,
 ) => {
-  console.log("Starting todo list application")
-  const todos = load();
+  console.log('Starting todo list application')
+  const todos = load()
 
   todoInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
-      addTodoHandler(todos, todoInput.value, dueDateInput.value, todoListDisplay)
+      addTodoHandler(
+        todos,
+        todoInput.value,
+        dueDateInput.value,
+        todoListDisplay,
+      )
     }
   })
 

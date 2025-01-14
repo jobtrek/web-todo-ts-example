@@ -7,7 +7,12 @@ export type Todo = {
 
 const STORAGE_KEY = 'todolist'
 
-export const addTodo = (todoList: Todo[], content: unknown, dueDate: unknown, completed = false): Todo[] => {
+export const addTodo = (
+  todoList: Todo[],
+  content: unknown,
+  dueDate: unknown,
+  completed = false,
+): Todo[] => {
   if (typeof content !== 'string') {
     throw new Error('Content must be a string')
   }
@@ -24,7 +29,7 @@ export const addTodo = (todoList: Todo[], content: unknown, dueDate: unknown, co
     id: randomId(),
     text: content,
     completed: completed,
-    duDate: date
+    duDate: date,
   })
   save(todoList)
   return todoList
@@ -40,7 +45,13 @@ export const removeTodo = (todoList: Todo[], id: string): Todo[] => {
   return todoList
 }
 
-export const updateTodo = (todoList: Todo[], id: string, content: unknown, dueDate: unknown, completed: unknown): Todo[] => {
+export const updateTodo = (
+  todoList: Todo[],
+  id: string,
+  content: unknown,
+  dueDate: unknown,
+  completed: unknown,
+): Todo[] => {
   const todo = todoList.find((todo) => todo.id === id)
   if (!todo) {
     throw new Error('Todo not found')
