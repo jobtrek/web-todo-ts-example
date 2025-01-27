@@ -21,14 +21,14 @@ export const startTodoListApplication = (
     if (e.key === 'Enter') {
       addTodoHandler(
         todos,
-        todoInput.value,
-        dueDateInput.value,
+        todoInput,
+        dueDateInput,
         todoListDisplay,
       )
     }
   })
 
   addTodoButton.addEventListener('click', () => {
-    addTodoHandler(todos, todoInput.value, dueDateInput.value, todoListDisplay)
+    addTodoHandler(todos, todoInput, dueDateInput, todoListDisplay)
   })
 }

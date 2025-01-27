@@ -2,12 +2,13 @@ import { type Todo, addTodo, removeTodo, toggleTodo } from './todoStorage.ts'
 
 export const addTodoHandler = (
   todoList: Todo[],
-  content: unknown,
-  dueDate: unknown,
+  content: HTMLInputElement,
+  dueDate: HTMLInputElement,
   todoListDisplay: HTMLUListElement,
 ) => {
-  addTodo(todoList, content, dueDate)
+  addTodo(todoList, content.value, dueDate.value)
   renderTodoList(todoList, todoListDisplay)
+  content.value = ''
 }
 
 const removeTodoHandler = (

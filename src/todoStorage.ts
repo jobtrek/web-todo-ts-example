@@ -9,13 +9,10 @@ const STORAGE_KEY = 'todolist'
 
 export const addTodo = (
   todoList: Todo[],
-  content: unknown,
-  dueDate: unknown,
+  content: string,
+  dueDate: string,
   completed = false,
 ): Todo[] => {
-  if (typeof content !== 'string') {
-    throw new Error('Content must be a string')
-  }
   if (content.length < 1) {
     throw new Error('Content must not be empty')
   }
