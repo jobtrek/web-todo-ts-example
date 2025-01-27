@@ -1,4 +1,4 @@
-export type Todo = {
+type Todo = {
   id: string
   text: string
   completed: boolean
@@ -7,7 +7,7 @@ export type Todo = {
 
 const STORAGE_KEY = 'todolist'
 
-export const addTodo = (
+const addTodo = (
   todoList: Todo[],
   content: string,
   dueDate: string,
@@ -32,7 +32,13 @@ export const addTodo = (
   return todoList
 }
 
-export const removeTodo = (todoList: Todo[], id: string): Todo[] => {
+const removeAllTodos = (todoList: Todo[]): Todo[] => {
+  todoList.splice(0, todoList.length)
+  save(todoList)
+  return todoList
+}
+
+const removeTodo = (todoList: Todo[], id: string): Todo[] => {
   const index = todoList.findIndex((todo) => todo.id === id)
   if (index === -1) {
     throw new Error('Todo not found')
@@ -42,7 +48,7 @@ export const removeTodo = (todoList: Todo[], id: string): Todo[] => {
   return todoList
 }
 
-export const updateTodo = (
+const updateTodo = (
   todoList: Todo[],
   id: string,
   content: unknown,
@@ -75,7 +81,7 @@ export const updateTodo = (
   return todoList
 }
 
-export const toggleTodo = (todoList: Todo[], id: string): Todo[] => {
+const toggleTodo = (todoList: Todo[], id: string): Todo[] => {
   const todo = todoList.find((todo) => todo.id === id)
   if (!todo) {
     throw new Error('Todo not found')
@@ -91,10 +97,12 @@ const save = (todoList: Todo[]) => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(todoList))
 }
 
-export const load = (): Todo[] => {
+const load = (): Todo[] => {
   const data = localStorage.getItem(STORAGE_KEY)
   if (!data) {
     return []
   }
   return JSON.parse(data)
 }
+
+export { type Todo, addTodo, removeAllTodos, removeTodo, updateTodo, toggleTodo, load }

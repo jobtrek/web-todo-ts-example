@@ -1,6 +1,12 @@
-import { type Todo, addTodo, removeTodo, toggleTodo } from './todoStorage.ts'
+import {
+  type Todo,
+  addTodo,
+  removeTodo,
+  toggleTodo,
+  removeAllTodos
+} from './todoStorage.ts'
 
-export const addTodoHandler = (
+const addTodoHandler = (
   todoList: Todo[],
   content: HTMLInputElement,
   dueDate: HTMLInputElement,
@@ -20,6 +26,14 @@ const removeTodoHandler = (
   renderTodoList(todoList, todoListDisplay)
 }
 
+const removeAllTodosHandler = (
+  todoList: Todo[],
+  todoListDisplay: HTMLUListElement,
+) => {
+  removeAllTodos(todoList)
+  renderTodoList(todoList, todoListDisplay)
+}
+
 const toggleTodoHandler = (
   todoList: Todo[],
   id: string,
@@ -29,7 +43,7 @@ const toggleTodoHandler = (
   renderTodoList(todoList, todoListDisplay)
 }
 
-export const renderTodoList = (
+const renderTodoList = (
   todoList: Todo[],
   todoListDisplay: HTMLUListElement,
 ) => {
@@ -57,3 +71,5 @@ export const renderTodoList = (
     todoListDisplay.append(todoElement)
   }
 }
+
+export { addTodoHandler, removeAllTodosHandler, renderTodoList }

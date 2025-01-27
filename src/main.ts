@@ -8,8 +8,9 @@ const addTodoButton =
   document.querySelector<HTMLButtonElement>('#add-todo-button')
 const todoListDisplay =
   document.querySelector<HTMLUListElement>('#todo-list-display')
+const deleteAllButton = document.querySelector<HTMLButtonElement>('#remove-all-todo-button')
 
-if (!todoInput || !dueDateInput || !addTodoButton || !todoListDisplay) {
+if (!todoInput || !dueDateInput || !addTodoButton || !todoListDisplay || !deleteAllButton) {
   throw new Error('One or more html elements missing, cannot start the app.')
 }
 
@@ -18,4 +19,5 @@ startTodoListApplication(
   dueDateInput,
   addTodoButton,
   todoListDisplay,
+  deleteAllButton,
 )
