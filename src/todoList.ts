@@ -1,7 +1,7 @@
 import {
   addTodoHandler,
   removeAllTodosHandler,
-  renderTodoList
+  renderTodoList,
 } from './todoDisplay.ts'
 import { load } from './todoStorage.ts'
 
@@ -12,13 +12,15 @@ import { load } from './todoStorage.ts'
  * @param addTodoButton
  * @param todoListDisplay
  * @param deleteAllButton
+ * @param errorContainer
  */
 export const startTodoListApplication = (
   todoInput: HTMLInputElement,
   dueDateInput: HTMLInputElement,
   addTodoButton: HTMLButtonElement,
   todoListDisplay: HTMLUListElement,
-  deleteAllButton: HTMLButtonElement
+  deleteAllButton: HTMLButtonElement,
+  errorContainer: HTMLDivElement,
 ) => {
   console.log('Starting todo list application')
   // Initial todos loading and rendering
@@ -32,12 +34,19 @@ export const startTodoListApplication = (
         todoInput,
         dueDateInput,
         todoListDisplay,
+        errorContainer,
       )
     }
   })
 
   addTodoButton.addEventListener('click', () => {
-    addTodoHandler(todos, todoInput, dueDateInput, todoListDisplay)
+    addTodoHandler(
+      todos,
+      todoInput,
+      dueDateInput,
+      todoListDisplay,
+      errorContainer,
+    )
   })
 
   deleteAllButton.addEventListener('click', () => {

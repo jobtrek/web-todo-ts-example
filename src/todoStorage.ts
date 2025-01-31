@@ -102,7 +102,20 @@ const load = (): Todo[] => {
   if (!data) {
     return []
   }
-  return JSON.parse(data)
+  return JSON.parse(data).map((t: Todo) => {
+    return {
+      ...t,
+      duDate: new Date(t.duDate),
+    }
+  })
 }
 
-export { type Todo, addTodo, removeAllTodos, removeTodo, updateTodo, toggleTodo, load }
+export {
+  type Todo,
+  addTodo,
+  removeAllTodos,
+  removeTodo,
+  updateTodo,
+  toggleTodo,
+  load,
+}

@@ -1,9 +1,9 @@
 import {
   type Todo,
   addTodo,
+  removeAllTodos,
   removeTodo,
   toggleTodo,
-  removeAllTodos
 } from './todoStorage.ts'
 
 const addTodoHandler = (
@@ -11,10 +11,31 @@ const addTodoHandler = (
   content: HTMLInputElement,
   dueDate: HTMLInputElement,
   todoListDisplay: HTMLUListElement,
+  errorContainer: HTMLDivElement,
 ) => {
-  addTodo(todoList, content.value, dueDate.value)
-  renderTodoList(todoList, todoListDisplay)
-  content.value = ''
+  try {
+    addTodo(todoList, content.value, dueDate.value)
+    renderTodoList(todoList, todoListDisplay)
+    content.value = ''
+    dueDate.value = ''
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      displayErrorMessage(error.message, errorContainer)
+    }
+  }
+}
+
+const displayErrorMessage = (
+  message: string,
+  errorContainer: HTMLDivElement,
+) => {
+  const p = document.createElement('p')
+  p.classList.add('red')
+  p.textContent = message
+  errorContainer.append(p)
+  setTimeout(() => {
+    errorContainer.innerHTML = ''
+  }, 3000)
 }
 
 const removeTodoHandler = (
