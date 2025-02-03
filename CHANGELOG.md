@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/jobtrek/web-todo-ts-example/compare/v1.1.0...v1.1.1) (2025-02-03)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump vite from 6.0.7 to 6.0.11 ([#3](https://github.com/jobtrek/web-todo-ts-example/issues/3)) ([19f3adf](https://github.com/jobtrek/web-todo-ts-example/commit/19f3adf9d7931bfaeb35519bf2a6107cb0363966))
+
 ## [1.1.0](https://github.com/jobtrek/web-todo-ts-example/compare/v1.0.0...v1.1.0) (2025-01-14)
 
 
