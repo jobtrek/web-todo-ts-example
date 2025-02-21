@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.2.0](https://github.com/jobtrek/web-todo-ts-example/compare/v1.1.2...v1.2.0) (2025-02-21)
+
+
+### Features
+
+* add todo service for api interactions ([99e9afe](https://github.com/jobtrek/web-todo-ts-example/commit/99e9afe2c404c78d08c3c5936def78cd93cd788a))
+* disable add todo button if input is empty ([99e9afe](https://github.com/jobtrek/web-todo-ts-example/commit/99e9afe2c404c78d08c3c5936def78cd93cd788a))
+* storage integration and disabled input ([99e9afe](https://github.com/jobtrek/web-todo-ts-example/commit/99e9afe2c404c78d08c3c5936def78cd93cd788a))
+* todo update and delete from api ([ef506da](https://github.com/jobtrek/web-todo-ts-example/commit/ef506da95e1517e7ab81bc3e995ee61d75d57f07))
+* use api for initial dispaly and todo creation ([99e9afe](https://github.com/jobtrek/web-todo-ts-example/commit/99e9afe2c404c78d08c3c5936def78cd93cd788a))
+
+
+### Bug Fixes
+
+* add initial rendering call ([ef506da](https://github.com/jobtrek/web-todo-ts-example/commit/ef506da95e1517e7ab81bc3e995ee61d75d57f07))
+* use right api fields on types ([ef506da](https://github.com/jobtrek/web-todo-ts-example/commit/ef506da95e1517e7ab81bc3e995ee61d75d57f07))
+
+
+### Miscellaneous Chores
+
+* **deps:** vite 6.1.1 ([99e9afe](https://github.com/jobtrek/web-todo-ts-example/commit/99e9afe2c404c78d08c3c5936def78cd93cd788a))
+
+
+### Refactors
+
+* extract todo array to data file for more concise injections ([ef506da](https://github.com/jobtrek/web-todo-ts-example/commit/ef506da95e1517e7ab81bc3e995ee61d75d57f07))
+
 ## [1.1.2](https://github.com/jobtrek/web-todo-ts-example/compare/v1.1.1...v1.1.2) (2025-02-10)
 
 
