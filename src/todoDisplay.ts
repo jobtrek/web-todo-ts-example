@@ -18,12 +18,12 @@ export const renderTodoList = (
     todoComplete.type = 'checkbox'
     todoComplete.checked = todo.done
     todoComplete.addEventListener('change', () => {
-      toggleTodoHandler(todoList, todo.id, todoListDisplay)
+      toggleTodoHandler(todo.id, todoListDisplay)
     })
     const todoRemove = document.createElement('button')
     todoRemove.textContent = 'Remove'
     todoRemove.addEventListener('click', () => {
-      removeTodoHandler(todoList, todo.id, todoListDisplay)
+      removeTodoHandler(todo.id, todoListDisplay)
     })
     todoElement.append(todoText, todoDate, todoComplete, todoRemove)
     todoListDisplay.append(todoElement)

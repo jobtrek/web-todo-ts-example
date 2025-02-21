@@ -24,3 +24,10 @@ export type GetTodoDto = {
   due_date: string
   done: boolean
 }
+
+/**
+ * Todo storage, this array will be used as the source of truth for the app
+ * It must always be updated before rendering
+ */
+
+export const todoList: Todo[] = []

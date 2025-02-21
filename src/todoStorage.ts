@@ -1,4 +1,4 @@
-import { createTodo } from './data/apiService'
+import { createTodo, deleteTodo } from './data/apiService'
 import type { InsertTodoDto, Todo } from './data/todo'
 
 const STORAGE_KEY = 'todolist'
@@ -33,14 +33,9 @@ export const addTodo = async (
   return todoList
 }
 
-export const removeTodo = (todoList: Todo[], id: number): Todo[] => {
-  const index = todoList.findIndex((todo) => todo.id === id)
-  if (index === -1) {
-    throw new Error('Todo not found')
-  }
-  todoList.splice(index, 1)
-  save(todoList)
-  return todoList
+export const removeTodo = async (todoList: Todo[], id: number): Promise<Todo[]> => {
+  await deleteTodo(id)
+  return todoList.filter((todo) => todo.id !== id)
 }
 
 export const updateTodo = (
