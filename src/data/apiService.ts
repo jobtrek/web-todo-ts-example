@@ -44,6 +44,7 @@ const createTodo = async (todo: InsertTodoDto): Promise<Todo> => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Prefer: 'return=representation',
       Accept: 'application/vnd.pgrst.object+json',
     },
     body: JSON.stringify(todo),
@@ -66,7 +67,7 @@ const updateTodo = async (todo: Todo): Promise<Todo> => {
       },
       body: JSON.stringify({
         // Do not send the id (already in URL)
-        text: todo.text,
+        title: todo.title,
         content: todo.content,
         due_date: todo.due_date.toISOString(),
         done: todo.done,

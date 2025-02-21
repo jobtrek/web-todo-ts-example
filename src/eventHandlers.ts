@@ -19,11 +19,7 @@ export const removeTodoHandler = async (
   id: number,
   todoListDisplay: HTMLUListElement,
 ): Promise<void> => {
-  todoList.splice(
-    0,
-    todoList.length,
-    ...(await removeTodo(todoList, id)),
-  )
+  todoList.splice(0, todoList.length, ...(await removeTodo(todoList, id)))
   renderTodoList(todoList, todoListDisplay)
 }
 
@@ -31,10 +27,6 @@ export const toggleTodoHandler = async (
   id: number,
   todoListDisplay: HTMLUListElement,
 ) => {
-  todoList.splice(
-    0,
-    todoList.length,
-    ...(await toggleTodo(todoList, id)),
-  )
+  todoList.splice(0, todoList.length, ...(await toggleTodo(todoList, id)))
   renderTodoList(todoList, todoListDisplay)
 }

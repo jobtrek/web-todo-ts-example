@@ -18,7 +18,7 @@ export const startTodoListApplication = async (
 ) => {
   console.log('Starting todo list application')
   // Initial todos loading
-  todoList.push(...await getAllTodos())
+  todoList.push(...(await getAllTodos()))
   // Initial rendering
   renderTodoList(todoList, todoListDisplay)
 
@@ -27,11 +27,7 @@ export const startTodoListApplication = async (
    */
   todoInput.addEventListener('keypress', async (e) => {
     if (e.key === 'Enter') {
-      await addTodoHandler(
-        todoInput.value,
-        dueDateInput.value,
-        todoListDisplay,
-      )
+      await addTodoHandler(todoInput.value, dueDateInput.value, todoListDisplay)
     }
   })
 

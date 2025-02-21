@@ -10,7 +10,7 @@ export const renderTodoList = (
     // add todo text, date and completion status to the list
     const todoElement = document.createElement('li')
     const todoText = document.createElement('span')
-    todoText.textContent = todo.text
+    todoText.textContent = todo.title
     const todoDate = document.createElement('time')
     todoDate.textContent = todo.due_date.toDateString()
     todoDate.dateTime = todo.due_date.toISOString()
