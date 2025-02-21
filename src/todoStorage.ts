@@ -1,12 +1,12 @@
-import { createTodo } from "./data/apiService"
-import type { InsertTodoDto, Todo } from "./data/todo"
+import { createTodo } from './data/apiService'
+import type { InsertTodoDto, Todo } from './data/todo'
 
 const STORAGE_KEY = 'todolist'
 
 export const addTodo = async (
   todoList: Todo[],
   content: unknown,
-  dueDate: unknown
+  dueDate: unknown,
 ): Promise<Todo[]> => {
   if (typeof content !== 'string') {
     throw new Error('Content must be a string')
@@ -15,7 +15,7 @@ export const addTodo = async (
     throw new Error('Content must not be empty')
   }
   const todoToCreate: InsertTodoDto = {
-    text: content
+    text: content,
   }
 
   // Verify date only if one is provided
@@ -85,8 +85,6 @@ export const toggleTodo = (todoList: Todo[], id: number): Todo[] => {
   save(todoList)
   return todoList
 }
-
-const randomId = () => `${Date.now()}-${Math.floor(Math.random() * 1000)}`
 
 const save = (todoList: Todo[]) => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(todoList))
