@@ -1,32 +1,5 @@
-import { type Todo, addTodo, removeTodo, toggleTodo } from './todoStorage.ts'
-
-export const addTodoHandler = (
-  todoList: Todo[],
-  content: unknown,
-  dueDate: unknown,
-  todoListDisplay: HTMLUListElement,
-) => {
-  addTodo(todoList, content, dueDate)
-  renderTodoList(todoList, todoListDisplay)
-}
-
-const removeTodoHandler = (
-  todoList: Todo[],
-  id: string,
-  todoListDisplay: HTMLUListElement,
-) => {
-  removeTodo(todoList, id)
-  renderTodoList(todoList, todoListDisplay)
-}
-
-const toggleTodoHandler = (
-  todoList: Todo[],
-  id: string,
-  todoListDisplay: HTMLUListElement,
-) => {
-  toggleTodo(todoList, id)
-  renderTodoList(todoList, todoListDisplay)
-}
+import type { Todo } from './data/todo.ts'
+import { removeTodoHandler, toggleTodoHandler } from './eventHandlers.ts'
 
 export const renderTodoList = (
   todoList: Todo[],
@@ -39,11 +12,11 @@ export const renderTodoList = (
     const todoText = document.createElement('span')
     todoText.textContent = todo.text
     const todoDate = document.createElement('time')
-    todoDate.textContent = todo.duDate.toDateString()
-    todoDate.dateTime = todo.duDate.toISOString()
+    todoDate.textContent = todo.due_date.toDateString()
+    todoDate.dateTime = todo.due_date.toISOString()
     const todoComplete = document.createElement('input')
     todoComplete.type = 'checkbox'
-    todoComplete.checked = todo.completed
+    todoComplete.checked = todo.done
     todoComplete.addEventListener('change', () => {
       toggleTodoHandler(todoList, todo.id, todoListDisplay)
     })
