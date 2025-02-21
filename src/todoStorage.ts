@@ -1,7 +1,5 @@
-import { createTodo } from './data/apiService'
+import { createTodo, deleteTodo, updateTodo } from './data/apiService'
 import type { InsertTodoDto, Todo } from './data/todo'
-
-const STORAGE_KEY = 'todolist'
 
 export const addTodo = async (
   todoList: Todo[],
@@ -15,7 +13,7 @@ export const addTodo = async (
     throw new Error('Content must not be empty')
   }
   const todoToCreate: InsertTodoDto = {
-    text: content,
+    title: content,
   }
 
   // Verify date only if one is provided
@@ -29,71 +27,29 @@ export const addTodo = async (
 
   const addedTodo = await createTodo(todoToCreate)
 
-  todoList.push(addedTodo)
-  return todoList
+  return [...todoList, addedTodo]
 }
 
-export const removeTodo = (todoList: Todo[], id: number): Todo[] => {
-  const index = todoList.findIndex((todo) => todo.id === id)
-  if (index === -1) {
-    throw new Error('Todo not found')
-  }
-  todoList.splice(index, 1)
-  save(todoList)
-  return todoList
-}
-
-export const updateTodo = (
+export const removeTodo = async (
   todoList: Todo[],
   id: number,
-  content: unknown,
-  dueDate: unknown,
-  completed: unknown,
-): Todo[] => {
-  const todo = todoList.find((todo) => todo.id === id)
-  if (!todo) {
-    throw new Error('Todo not found')
-  }
-  if (typeof content !== 'string') {
-    throw new Error('Content must be a string')
-  }
-  if (content.length < 1) {
-    throw new Error('Content must not be empty')
-  }
-  // @ts-ignore - types guard not ensured, but no need to respect them
-  const date = new Date(dueDate)
-  if (Number.isNaN(date.getTime())) {
-    throw new Error('Invalid due date')
-  }
-  if (typeof completed !== 'boolean') {
-    throw new Error('Completed must be a boolean')
-  }
-
-  todo.text = content
-  todo.due_date = date
-  todo.done = completed
-  save(todoList)
-  return todoList
+): Promise<Todo[]> => {
+  await deleteTodo(id)
+  return todoList.filter((todo) => todo.id !== id)
 }
 
-export const toggleTodo = (todoList: Todo[], id: number): Todo[] => {
+export const toggleTodo = async (
+  todoList: Todo[],
+  id: number,
+): Promise<Todo[]> => {
   const todo = todoList.find((todo) => todo.id === id)
   if (!todo) {
     throw new Error('Todo not found')
   }
   todo.done = !todo.done
-  save(todoList)
-  return todoList
-}
-
-const save = (todoList: Todo[]) => {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(todoList))
-}
-
-export const load = (): Todo[] => {
-  const data = localStorage.getItem(STORAGE_KEY)
-  if (!data) {
-    return []
-  }
-  return JSON.parse(data)
+  const updatedTodo = await updateTodo(todo)
+  // Return a new array with the updated todo
+  return todoList.map((todo) =>
+    todo.id === updatedTodo.id ? updatedTodo : todo,
+  )
 }

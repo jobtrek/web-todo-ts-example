@@ -1,7 +1,7 @@
 import type { GetTodoDto, InsertTodoDto, Todo } from './todo.ts'
 
 // Specify your API endpoint here
-const TODO_SERVICE_ENDPOINT = 'https://api.todo.in.jt-lab.ch/'
+const TODO_SERVICE_ENDPOINT = 'https://api.todos.in.jt-lab.ch'
 
 /**
  * Maps the deserialized todo to an instance of Todo
@@ -44,6 +44,7 @@ const createTodo = async (todo: InsertTodoDto): Promise<Todo> => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Prefer: 'return=representation',
       Accept: 'application/vnd.pgrst.object+json',
     },
     body: JSON.stringify(todo),
@@ -66,7 +67,7 @@ const updateTodo = async (todo: Todo): Promise<Todo> => {
       },
       body: JSON.stringify({
         // Do not send the id (already in URL)
-        text: todo.text,
+        title: todo.title,
         content: todo.content,
         due_date: todo.due_date.toISOString(),
         done: todo.done,

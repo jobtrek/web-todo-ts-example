@@ -1,5 +1,7 @@
 import { getAllTodos } from './data/apiService.ts'
+import { todoList } from './data/todo.ts'
 import { addTodoHandler } from './eventHandlers.ts'
+import { renderTodoList } from './todoDisplay.ts'
 
 /**
  * This function initializes the todo list application.
@@ -15,24 +17,22 @@ export const startTodoListApplication = async (
   todoListDisplay: HTMLUListElement,
 ) => {
   console.log('Starting todo list application')
-  const todos = await getAllTodos()
+  // Initial todos loading
+  todoList.push(...(await getAllTodos()))
+  // Initial rendering
+  renderTodoList(todoList, todoListDisplay)
 
   /**
    * Events for todo creation
    */
-  todoInput.addEventListener('keypress', (e) => {
+  todoInput.addEventListener('keypress', async (e) => {
     if (e.key === 'Enter') {
-      addTodoHandler(
-        todos,
-        todoInput.value,
-        dueDateInput.value,
-        todoListDisplay,
-      )
+      await addTodoHandler(todoInput.value, dueDateInput.value, todoListDisplay)
     }
   })
 
-  addTodoButton.addEventListener('click', () => {
-    addTodoHandler(todos, todoInput.value, dueDateInput.value, todoListDisplay)
+  addTodoButton.addEventListener('click', async () => {
+    await addTodoHandler(todoInput.value, dueDateInput.value, todoListDisplay)
   })
 
   /**

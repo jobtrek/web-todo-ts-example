@@ -10,7 +10,7 @@ export const renderTodoList = (
     // add todo text, date and completion status to the list
     const todoElement = document.createElement('li')
     const todoText = document.createElement('span')
-    todoText.textContent = todo.text
+    todoText.textContent = todo.title
     const todoDate = document.createElement('time')
     todoDate.textContent = todo.due_date.toDateString()
     todoDate.dateTime = todo.due_date.toISOString()
@@ -18,12 +18,12 @@ export const renderTodoList = (
     todoComplete.type = 'checkbox'
     todoComplete.checked = todo.done
     todoComplete.addEventListener('change', () => {
-      toggleTodoHandler(todoList, todo.id, todoListDisplay)
+      toggleTodoHandler(todo.id, todoListDisplay)
     })
     const todoRemove = document.createElement('button')
     todoRemove.textContent = 'Remove'
     todoRemove.addEventListener('click', () => {
-      removeTodoHandler(todoList, todo.id, todoListDisplay)
+      removeTodoHandler(todo.id, todoListDisplay)
     })
     todoElement.append(todoText, todoDate, todoComplete, todoRemove)
     todoListDisplay.append(todoElement)
