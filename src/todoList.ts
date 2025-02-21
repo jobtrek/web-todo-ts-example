@@ -1,5 +1,5 @@
-import { addTodoHandler } from './todoDisplay.ts'
-import { load } from './todoStorage.ts'
+import { getAllTodos } from './data/apiService.ts'
+import { addTodoHandler } from './eventHandlers.ts'
 
 /**
  * This function initializes the todo list application.
@@ -8,15 +8,18 @@ import { load } from './todoStorage.ts'
  * @param addTodoButton
  * @param todoListDisplay
  */
-export const startTodoListApplication = (
+export const startTodoListApplication = async (
   todoInput: HTMLInputElement,
   dueDateInput: HTMLInputElement,
   addTodoButton: HTMLButtonElement,
   todoListDisplay: HTMLUListElement,
 ) => {
   console.log('Starting todo list application')
-  const todos = load()
+  const todos = await getAllTodos()
 
+  /**
+   * Events for todo creation
+   */
   todoInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
       addTodoHandler(
@@ -30,5 +33,12 @@ export const startTodoListApplication = (
 
   addTodoButton.addEventListener('click', () => {
     addTodoHandler(todos, todoInput.value, dueDateInput.value, todoListDisplay)
+  })
+
+  /**
+   * Event to disable button when no text is present
+   */
+  todoInput.addEventListener('input', () => {
+    addTodoButton.disabled = todoInput.value.length < 1
   })
 }

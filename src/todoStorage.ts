@@ -1,41 +1,39 @@
-export type Todo = {
-  id: string
-  text: string
-  completed: boolean
-  duDate: Date
-}
+import { createTodo } from './data/apiService'
+import type { InsertTodoDto, Todo } from './data/todo'
 
 const STORAGE_KEY = 'todolist'
 
-export const addTodo = (
+export const addTodo = async (
   todoList: Todo[],
   content: unknown,
   dueDate: unknown,
-  completed = false,
-): Todo[] => {
+): Promise<Todo[]> => {
   if (typeof content !== 'string') {
     throw new Error('Content must be a string')
   }
   if (content.length < 1) {
     throw new Error('Content must not be empty')
   }
-  // @ts-ignore - types guard not ensured, but no need to respect them
-  const date = new Date(dueDate)
-  if (Number.isNaN(date.getTime())) {
-    throw new Error('Invalid due date')
+  const todoToCreate: InsertTodoDto = {
+    text: content,
   }
 
-  todoList.push({
-    id: randomId(),
-    text: content,
-    completed: completed,
-    duDate: date,
-  })
-  save(todoList)
+  // Verify date only if one is provided
+  if (typeof dueDate === 'string' && dueDate.length > 0) {
+    const date = new Date(dueDate)
+    if (Number.isNaN(date.getTime())) {
+      throw new Error('Invalid due date')
+    }
+    todoToCreate.due_date = date
+  }
+
+  const addedTodo = await createTodo(todoToCreate)
+
+  todoList.push(addedTodo)
   return todoList
 }
 
-export const removeTodo = (todoList: Todo[], id: string): Todo[] => {
+export const removeTodo = (todoList: Todo[], id: number): Todo[] => {
   const index = todoList.findIndex((todo) => todo.id === id)
   if (index === -1) {
     throw new Error('Todo not found')
@@ -47,7 +45,7 @@ export const removeTodo = (todoList: Todo[], id: string): Todo[] => {
 
 export const updateTodo = (
   todoList: Todo[],
-  id: string,
+  id: number,
   content: unknown,
   dueDate: unknown,
   completed: unknown,
@@ -72,23 +70,21 @@ export const updateTodo = (
   }
 
   todo.text = content
-  todo.duDate = date
-  todo.completed = completed
+  todo.due_date = date
+  todo.done = completed
   save(todoList)
   return todoList
 }
 
-export const toggleTodo = (todoList: Todo[], id: string): Todo[] => {
+export const toggleTodo = (todoList: Todo[], id: number): Todo[] => {
   const todo = todoList.find((todo) => todo.id === id)
   if (!todo) {
     throw new Error('Todo not found')
   }
-  todo.completed = !todo.completed
+  todo.done = !todo.done
   save(todoList)
   return todoList
 }
-
-const randomId = () => `${Date.now()}-${Math.floor(Math.random() * 1000)}`
 
 const save = (todoList: Todo[]) => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(todoList))
