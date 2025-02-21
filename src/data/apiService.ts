@@ -1,7 +1,7 @@
 import type { GetTodoDto, InsertTodoDto, Todo } from './todo.ts'
 
 // Specify your API endpoint here
-const TODO_SERVICE_ENDPOINT = 'https://api.todo.in.jt-lab.ch/'
+const TODO_SERVICE_ENDPOINT = 'https://api.todos.in.jt-lab.ch'
 
 /**
  * Maps the deserialized todo to an instance of Todo

@@ -1,6 +1,7 @@
 import { getAllTodos } from './data/apiService.ts'
 import { todoList } from './data/todo.ts'
 import { addTodoHandler } from './eventHandlers.ts'
+import { renderTodoList } from './todoDisplay.ts'
 
 /**
  * This function initializes the todo list application.
@@ -16,7 +17,10 @@ export const startTodoListApplication = async (
   todoListDisplay: HTMLUListElement,
 ) => {
   console.log('Starting todo list application')
+  // Initial todos loading
   todoList.push(...await getAllTodos())
+  // Initial rendering
+  renderTodoList(todoList, todoListDisplay)
 
   /**
    * Events for todo creation
