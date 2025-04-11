@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.3](https://github.com/jobtrek/web-todo-ts-example/compare/v1.2.2...v1.2.3) (2025-04-11)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump typescript from 5.8.2 to 5.8.3 ([#18](https://github.com/jobtrek/web-todo-ts-example/issues/18)) ([803f2d2](https://github.com/jobtrek/web-todo-ts-example/commit/803f2d23575aef5545878147d12ce5eaf94e8a6e))
+* **deps-dev:** bump vite from 6.2.3 to 6.2.5 ([#17](https://github.com/jobtrek/web-todo-ts-example/issues/17)) ([3fd1ebf](https://github.com/jobtrek/web-todo-ts-example/commit/3fd1ebf8d7f87480dc3c8f516a83e4d132149eba))
+
 ## [1.2.2](https://github.com/jobtrek/web-todo-ts-example/compare/v1.2.1...v1.2.2) (2025-04-03)
 
 
