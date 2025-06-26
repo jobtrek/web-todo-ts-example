@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.6](https://github.com/jobtrek/web-todo-ts-example/compare/v1.2.5...v1.2.6) (2025-06-26)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump @biomejs/biome from 1.9.4 to 2.0.4 ([#26](https://github.com/jobtrek/web-todo-ts-example/issues/26)) ([3eb79d2](https://github.com/jobtrek/web-todo-ts-example/commit/3eb79d2e7575d30ab1f36e87a7c494ed8bf0dd9b))
+* update biome config for 2.0 ([#28](https://github.com/jobtrek/web-todo-ts-example/issues/28)) ([ef37a87](https://github.com/jobtrek/web-todo-ts-example/commit/ef37a8765e198c607d2a1e00ac21656d9f89bb10))
+
+
+### Continuous Integration
+
+* update workflows to pnpm 10 ([ef37a87](https://github.com/jobtrek/web-todo-ts-example/commit/ef37a8765e198c607d2a1e00ac21656d9f89bb10))
+
 ## [1.2.5](https://github.com/jobtrek/web-todo-ts-example/compare/v1.2.4...v1.2.5) (2025-05-12)
 
 
