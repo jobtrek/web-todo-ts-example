@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.7](https://github.com/jobtrek/web-todo-ts-example/compare/v1.2.6...v1.2.7) (2025-08-25)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump actions/checkout from 4 to 5 ([#29](https://github.com/jobtrek/web-todo-ts-example/issues/29)) ([8abf33e](https://github.com/jobtrek/web-todo-ts-example/commit/8abf33e5c08345016747d2242a90e353d7d1873f))
+* **deps:** bump actions/upload-pages-artifact from 3 to 4 ([#30](https://github.com/jobtrek/web-todo-ts-example/issues/30)) ([48a6deb](https://github.com/jobtrek/web-todo-ts-example/commit/48a6deb2c55b6edb6c19132282bfd1b27d130967))
+
 ## [1.2.6](https://github.com/jobtrek/web-todo-ts-example/compare/v1.2.5...v1.2.6) (2025-06-26)
 
 
