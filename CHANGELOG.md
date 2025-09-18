@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.8](https://github.com/jobtrek/web-todo-ts-example/compare/v1.2.7...v1.2.8) (2025-09-18)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump actions/setup-node from 4 to 5 ([#32](https://github.com/jobtrek/web-todo-ts-example/issues/32)) ([0696af8](https://github.com/jobtrek/web-todo-ts-example/commit/0696af8f37a60341b3b514de7261409f47c0dc80))
+
 ## [1.2.7](https://github.com/jobtrek/web-todo-ts-example/compare/v1.2.6...v1.2.7) (2025-08-25)
 
 
